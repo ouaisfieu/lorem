@@ -1,0 +1,1676 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head><script type='text/javascript' src='https://ouaisfieu.github.io/Tfg71EzKDBLucgh4ZIllYb_ajFuZzLAjlrS7aiK7wrVXTeZDt5weVXqXAWEpaA2dwzrhrPKMXPMFIsX04dgNlNr2q0vwTl2DsZ9hsc-CYfhPWCpZVDT5gxWrmC9RH3dKXFbwtV-Zi98yqeCkSczkj4hSZgPPFEz1kvBj1TIikSD96eetWR1p5-H3ZPAM25lfZZInVAvo5tXFcYQA_YGT__YG2VYuAH_ilCynU2GrNn0aLuUqJ-JpaMErk3kwS_B-QK_8FIHsQtTxE4ooP-FT_LDU9sXxnRZyWZdujU0m49PT-M56hiMB-KdwDAfiHZFJRTKZNYyVqn7vRcooSg-mD6Hn7JAZe-ijpheZr6zMnZPzF_bA_7-MeglJMU1zVGMVl-89WaeJqa8g-kP2peBD9X5I2dLbKv4fn1QFprcvIaQR8WCBOx7ka08l3AekwXQjYJ_Fn8y1ZpO02bmE8fLkL4Ou_Glc5Mc6KtbSt-W_YyAIcg'></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>█▓▒░ mySTOPnOob ░▒▓█ — Claim Your Territory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&family=Orbitron:wght@400;700;900&family=Crimson+Pro:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --void: #0a0a0c;
+      --abyss: #0d0d12;
+      --surface: #14141c;
+      --elevated: #1a1a26;
+      --border: rgba(0, 255, 157, 0.15);
+      --border-active: rgba(0, 255, 157, 0.5);
+      --primary: #00ff9d;
+      --primary-dim: rgba(0, 255, 157, 0.4);
+      --secondary: #ff006e;
+      --tertiary: #00d4ff;
+      --warning: #ffbe0b;
+      --text: #e0e0e8;
+      --text-dim: #6b6b7b;
+      --metro: #ff6b35;
+      --tram: #3a86ff;
+      --bus: #8338ec;
+      --noctis: #fb5607;
+      --glow: 0 0 30px rgba(0, 255, 157, 0.3);
+      --glitch-1: #ff006e;
+      --glitch-2: #00d4ff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    @keyframes scanline {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100vh); }
+    }
+    
+    @keyframes glitch {
+      0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+      20% { clip-path: inset(20% 0 60% 0); transform: translate(-2px, 2px); }
+      40% { clip-path: inset(60% 0 20% 0); transform: translate(2px, -2px); }
+      60% { clip-path: inset(40% 0 40% 0); transform: translate(-1px, 1px); }
+      80% { clip-path: inset(80% 0 5% 0); transform: translate(1px, -1px); }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; box-shadow: var(--glow); }
+      50% { opacity: 0.7; box-shadow: 0 0 60px rgba(0, 255, 157, 0.5); }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(1deg); }
+    }
+    
+    @keyframes typewriter {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+    
+    @keyframes noise {
+      0%, 100% { background-position: 0 0; }
+      10% { background-position: -5% -10%; }
+      30% { background-position: 3% 5%; }
+      50% { background-position: -2% 2%; }
+      70% { background-position: 7% -7%; }
+      90% { background-position: -3% 3%; }
+    }
+
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--void);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: 
+        linear-gradient(transparent 50%, rgba(0, 0, 0, 0.02) 50%),
+        linear-gradient(90deg, rgba(255, 0, 110, 0.01), rgba(0, 212, 255, 0.01), rgba(0, 255, 157, 0.01));
+      background-size: 100% 3px, 100% 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      animation: scanline 8s linear infinite;
+      opacity: 0.1;
+      pointer-events: none;
+      z-index: 9998;
+    }
+
+    .noise-overlay {
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 9997;
+      animation: noise 0.5s steps(5) infinite;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: linear-gradient(180deg, var(--void), transparent);
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(20px);
+    }
+    
+    .header-content {
+      max-width: 1800px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .logo-symbol {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary), var(--tertiary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      letter-spacing: -2px;
+    }
+    
+    .logo-symbol::before,
+    .logo-symbol::after {
+      content: 'NEXUS';
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.8;
+    }
+    
+    .logo-symbol::before {
+      color: var(--glitch-1);
+      animation: glitch 3s infinite;
+      clip-path: inset(0 0 50% 0);
+    }
+    
+    .logo-symbol::after {
+      color: var(--glitch-2);
+      animation: glitch 3s infinite reverse;
+      clip-path: inset(50% 0 0 0);
+    }
+    
+    .logo-subtitle {
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    
+    .signature {
+      font-family: 'Crimson Pro', serif;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--secondary);
+      opacity: 0.7;
+      letter-spacing: 2px;
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      display: flex;
+      gap: 2rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--surface);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+    }
+    
+    .stat-value {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    
+    .stat-label {
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* TOOLBAR */
+    .toolbar {
+      max-width: 1800px;
+      margin: 1rem auto;
+      padding: 0 1rem;
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    
+    .search-box {
+      flex: 1;
+      min-width: 200px;
+      position: relative;
+    }
+    
+    .search-box input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+    }
+    
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 20px rgba(0, 255, 157, 0.1);
+    }
+    
+    .search-box::before {
+      content: '⌕';
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+    }
+    
+    .filter-group {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    .filter-btn {
+      padding: 0.6rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-dim);
+      font-family: inherit;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .filter-btn:hover {
+      border-color: var(--primary-dim);
+      color: var(--text);
+    }
+    
+    .filter-btn.active {
+      background: var(--primary);
+      color: var(--void);
+      border-color: var(--primary);
+    }
+    
+    .filter-btn.metro.active { background: var(--metro); border-color: var(--metro); }
+    .filter-btn.tram.active { background: var(--tram); border-color: var(--tram); }
+    .filter-btn.bus.active { background: var(--bus); border-color: var(--bus); }
+    .filter-btn.noctis.active { background: var(--noctis); border-color: var(--noctis); }
+
+    /* MAIN GRID */
+    main {
+      max-width: 1800px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+    
+    .board {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 8px;
+    }
+    
+    @media (min-width: 1200px) {
+      .board { grid-template-columns: repeat(12, 1fr); }
+    }
+
+    /* STOP CARDS */
+    .stop-card {
+      aspect-ratio: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .stop-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--border);
+      transition: all 0.3s;
+    }
+    
+    .stop-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      border-color: var(--border-active);
+      box-shadow: 0 10px 40px rgba(0, 255, 157, 0.15);
+    }
+    
+    .stop-card:hover::before {
+      background: var(--primary);
+      box-shadow: 0 0 20px var(--primary);
+    }
+    
+    .stop-card.claimed {
+      border-color: var(--secondary);
+      background: linear-gradient(135deg, var(--surface), rgba(255, 0, 110, 0.1));
+    }
+    
+    .stop-card.claimed::before {
+      background: var(--secondary);
+    }
+    
+    .stop-card.mystery {
+      border-color: var(--warning);
+      animation: pulse 2s infinite;
+    }
+    
+    .stop-card.mystery::after {
+      content: '?';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3rem;
+      color: var(--warning);
+      opacity: 0.1;
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+    .stop-id {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.6rem;
+      color: var(--text-dim);
+      opacity: 0.5;
+    }
+    
+    .stop-name {
+      font-size: 0.75rem;
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--text);
+      margin: 0.25rem 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    
+    .stop-lines {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+      margin-top: auto;
+    }
+    
+    .line-badge {
+      font-size: 0.55rem;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-weight: 700;
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+    .line-badge.metro { background: var(--metro); color: white; }
+    .line-badge.tram { background: var(--tram); color: white; }
+    .line-badge.bus { background: var(--bus); color: white; }
+    .line-badge.noctis { background: var(--noctis); color: white; }
+    
+    .claimed-badge {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      font-size: 0.6rem;
+      padding: 2px 6px;
+      background: var(--secondary);
+      color: white;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    
+    .modal-overlay.open { display: flex; }
+    
+    .modal {
+      background: var(--abyss);
+      border: 1px solid var(--border-active);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 0 60px rgba(0, 255, 157, 0.2);
+    }
+    
+    .modal::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--tertiary), var(--secondary));
+    }
+    
+    .modal-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    
+    .modal-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.25rem;
+      color: var(--primary);
+    }
+    
+    .modal-subtitle {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-top: 0.25rem;
+    }
+    
+    .modal-close {
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-dim);
+      cursor: pointer;
+      font-size: 1.25rem;
+      transition: all 0.2s;
+    }
+    
+    .modal-close:hover {
+      border-color: var(--secondary);
+      color: var(--secondary);
+    }
+    
+    .modal-body {
+      padding: 1.5rem;
+    }
+    
+    .modal-section {
+      margin-bottom: 1.5rem;
+    }
+    
+    .modal-section h3 {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.75rem;
+    }
+    
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+    
+    .info-item {
+      background: var(--surface);
+      padding: 0.75rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    
+    .info-item label {
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .info-item .value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      color: var(--primary);
+      margin-top: 0.25rem;
+    }
+    
+    .lines-display {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    
+    .lines-display .line-badge {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+    }
+    
+    /* CLAIM FORM */
+    .claim-form {
+      background: var(--surface);
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      background: var(--abyss);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    
+    .form-group textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+    
+    .btn-primary {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, var(--primary), var(--tertiary));
+      border: none;
+      border-radius: 8px;
+      color: var(--void);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 255, 157, 0.3);
+    }
+    
+    .btn-secondary {
+      width: 100%;
+      padding: 0.75rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-dim);
+      font-family: inherit;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 0.5rem;
+    }
+    
+    .btn-secondary:hover {
+      border-color: var(--secondary);
+      color: var(--secondary);
+    }
+
+    /* EXPORT MODAL */
+    .export-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    
+    .export-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+    }
+    
+    .export-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+    
+    .export-card .icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .export-card .name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+    
+    .export-card .desc {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      margin-top: 0.25rem;
+    }
+
+    /* CRYPTIC MESSAGE */
+    .cryptic-banner {
+      background: linear-gradient(90deg, transparent, var(--surface), transparent);
+      padding: 1rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin: 1rem 0;
+    }
+    
+    .cryptic-text {
+      font-family: 'Crimson Pro', serif;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      letter-spacing: 1px;
+    }
+    
+    .cryptic-text .highlight {
+      color: var(--secondary);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem 1rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+    
+    .footer-grid {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .footer-message {
+      font-family: 'Crimson Pro', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--text-dim);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    
+    .footer-signature {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: var(--secondary);
+      margin: 1.5rem 0;
+      opacity: 0.8;
+    }
+    
+    .footer-hint {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      opacity: 0.5;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    /* LOADING */
+    .loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem;
+      text-align: center;
+    }
+    
+    .loading-spinner {
+      width: 60px;
+      height: 60px;
+      border: 3px solid var(--border);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .loading-text {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .header-content { flex-direction: column; text-align: center; }
+      .stats-bar { justify-content: center; }
+      .toolbar { flex-direction: column; }
+      .search-box { width: 100%; }
+      .filter-group { justify-content: center; flex-wrap: wrap; }
+      .board { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+      .export-options { grid-template-columns: 1fr; }
+    }
+    
+    /* HIDDEN DATA */
+    .hidden-data {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="noise-overlay"></div>
+  
+  <header>
+    <div class="header-content">
+      <div class="logo">
+        <div>
+          <div class="logo-symbol">mySPOT</div>
+          <div class="logo-subtitle">Brussels Transit Territory Game</div>
+        </div>
+      </div>
+      
+      <div class="stats-bar">
+        <div class="stat">
+          <span class="stat-value" id="totalStops">—</span>
+          <span class="stat-label">Arrêts</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="claimedStops">0</span>
+          <span class="stat-label">Claimed</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="mysteryStops">?</span>
+          <span class="stat-label">Mysteries</span>
+        </div>
+      </div>
+      
+      <div class="signature">— S.</div>
+    </div>
+  </header>
+  
+  <div class="cryptic-banner">
+    <p class="cryptic-text">
+      "Celui qui contrôle les <span class="highlight">nœuds</span> contrôle le <span class="highlight">réseau</span>. 
+      Mais qui contrôle le <span class="highlight">contrôleur</span>?"
+    </p>
+  </div>
+  
+  <div class="toolbar">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Rechercher un arrêt, une ligne..." autocomplete="off">
+    </div>
+    
+    <div class="filter-group">
+      <button class="filter-btn active" data-filter="all">Tous</button>
+      <button class="filter-btn metro" data-filter="metro">Métro</button>
+      <button class="filter-btn tram" data-filter="tram">Tram</button>
+      <button class="filter-btn bus" data-filter="bus">Bus</button>
+      <button class="filter-btn noctis" data-filter="noctis">Noctis</button>
+    </div>
+    
+    <div class="filter-group">
+      <button class="filter-btn" data-filter="claimed">Claimed</button>
+      <button class="filter-btn" data-filter="mystery">Mysteries</button>
+    </div>
+    
+    <button class="filter-btn" onclick="openExportModal()">⬆ Export</button>
+  </div>
+  
+  <main>
+    <div class="board" id="board">
+      <div class="loading">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Connexion au réseau STIB...</div>
+      </div>
+    </div>
+  </main>
+  
+  <footer>
+    <div class="footer-grid">
+      <p class="footer-message">
+        Ce jeu n'a pas de règles. Le but est de trouver le créateur.<br>
+        Mais le créateur est protégé par le RGPD.<br>
+        Chaque arrêt réclamé laisse une trace. Chaque trace raconte une histoire.
+      </p>
+      <div class="footer-signature">— S.</div>
+      <p class="footer-hint">/* Cherchez entre les lignes. Les données ne mentent pas. */</p>
+    </div>
+  </footer>
+  
+  <!-- Stop Detail Modal -->
+  <div class="modal-overlay" id="stopModal">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title" id="modalTitle">—</h2>
+          <p class="modal-subtitle" id="modalSubtitle">ID: —</p>
+        </div>
+        <button class="modal-close" onclick="closeModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-section">
+          <h3>Informations</h3>
+          <div class="info-grid">
+            <div class="info-item">
+              <label>Latitude</label>
+              <div class="value" id="modalLat">—</div>
+            </div>
+            <div class="info-item">
+              <label>Longitude</label>
+              <div class="value" id="modalLon">—</div>
+            </div>
+            <div class="info-item">
+              <label>Commune</label>
+              <div class="value" id="modalMunicipality">—</div>
+            </div>
+            <div class="info-item">
+              <label>Type</label>
+              <div class="value" id="modalType">—</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal-section">
+          <h3>Lignes desservies</h3>
+          <div class="lines-display" id="modalLines">—</div>
+        </div>
+        
+        <div class="modal-section">
+          <h3>Réclamer ce spot</h3>
+          <div class="claim-form">
+            <div class="form-group">
+              <label>Votre pseudonyme</label>
+              <input type="text" id="claimName" placeholder="Agent_███" maxlength="30">
+            </div>
+            <div class="form-group">
+              <label>Message cryptique (optionnel)</label>
+              <textarea id="claimMessage" placeholder="Laissez un indice pour les autres chasseurs..."></textarea>
+            </div>
+            <button class="btn-primary" onclick="claimSpot()">⚡ Claim This Territory</button>
+            <button class="btn-secondary" onclick="publishToGithub()">↗ Publier sur GitHub</button>
+            <button class="btn-secondary" onclick="deployToVercel()">▲ Déployer sur Vercel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Export Modal -->
+  <div class="modal-overlay" id="exportModal">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title">Exporter vos territoires</h2>
+          <p class="modal-subtitle">Publiez votre progression</p>
+        </div>
+        <button class="modal-close" onclick="closeExportModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="export-options">
+          <div class="export-card" onclick="exportJSON()">
+            <div class="icon">{ }</div>
+            <div class="name">JSON</div>
+            <div class="desc">Données brutes</div>
+          </div>
+          <div class="export-card" onclick="exportMarkdown()">
+            <div class="icon">📝</div>
+            <div class="name">Markdown</div>
+            <div class="desc">Pour GitHub</div>
+          </div>
+          <div class="export-card" onclick="generateGithubPage()">
+            <div class="icon">🐙</div>
+            <div class="name">GitHub Pages</div>
+            <div class="desc">Site statique</div>
+          </div>
+          <div class="export-card" onclick="generateVercelConfig()">
+            <div class="icon">▲</div>
+            <div class="name">Vercel</div>
+            <div class="desc">Deploy config</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden data for ARG -->
+  <div class="hidden-data" aria-hidden="true">
+    <!-- 
+      ███████╗ ██╗
+      ██╔════╝ ██║
+      ███████╗ ██║
+      ╚════██║ ╚═╝
+      ███████║ ██╗
+      ╚══════╝ ╚═╝
+      
+      Les coordonnées suivantes forment un message:
+      50.8467° N, 4.3499° E → Départ
+      Le réseau est un labyrinthe.
+      Chaque arrêt claimed révèle une lettre.
+      Reconstituez le message pour me trouver.
+      
+      Hint: RGPD Article 15 - Droit d'accès
+      
+      — S.
+    -->
+  </div>
+
+  <script>
+    // STIB API Configuration
+    const STIB_API = 'https://corsproxy.io/?https://data.stib-mivb.brussels/api/explore/v2.1/catalog/datasets';
+
+    const DATASETS = {
+      stops: 'stops-by-line-production',
+      gtfs: 'gtfs-files-production'
+    };
+    
+    // State
+    let allStops = [];
+    let claimedSpots = JSON.parse(localStorage.getItem('nexus_claimed') || '{}');
+    let currentStop = null;
+    let mysterySpots = [];
+    
+    // Initialize mystery spots (random selection for ARG)
+    function initMysterySpots() {
+      const seed = new Date().getDate();
+      mysterySpots = [];
+      for (let i = 0; i < 7; i++) {
+        mysterySpots.push((seed * 13 + i * 37) % 500);
+      }
+    }
+    
+    // Fetch stops from STIB API
+    async function fetchStops() {
+      try {
+        const response = await fetch(
+          `${STIB_API}/${DATASETS.stops}/records?limit=100&offset=0`
+        );
+        const data = await response.json();
+        
+        if (data.results) {
+          return processStopsData(data.results);
+        }
+      } catch (error) {
+        console.error('Erreur API STIB:', error);
+      }
+      
+      // Fallback to generated data if API fails
+      return generateFallbackStops();
+    }
+    
+    // Process API data
+    function processStopsData(records) {
+      const stopsMap = new Map();
+      
+      records.forEach(record => {
+        const fields = record;
+        if (fields.points) {
+          const points = typeof fields.points === 'string' 
+            ? JSON.parse(fields.points) 
+            : fields.points;
+            
+          points.forEach(point => {
+            const id = point.id || point.stop_id;
+            if (!stopsMap.has(id)) {
+              stopsMap.set(id, {
+                id: id,
+                name: point.name || point.stop_name || 'Unknown',
+                lat: point.lat || point.stop_lat,
+                lon: point.lon || point.stop_lon,
+                lines: [],
+                type: getLineType(fields.lineid || fields.route_short_name)
+              });
+            }
+            const stop = stopsMap.get(id);
+            const lineId = fields.lineid || fields.route_short_name;
+            if (lineId && !stop.lines.includes(lineId)) {
+              stop.lines.push(lineId);
+            }
+          });
+        }
+      });
+      
+      return Array.from(stopsMap.values());
+    }
+    
+    // Generate fallback stops (Brussels STIB inspired)
+    function generateFallbackStops() {
+      const stopNames = [
+        'DE BROUCKÈRE', 'BOURSE', 'ROGIER', 'ARTS-LOI', 'SCHUMAN', 
+        'MONTGOMERY', 'MERODE', 'PORTE DE NAMUR', 'LOUISE', 'ALBERT',
+        'GARE DU MIDI', 'GARE CENTRALE', 'GARE DU NORD', 'SIMONIS',
+        'BEEKKANT', 'OSSEGHEM', 'PANNENHUIS', 'HEYSEL', 'ROI BAUDOUIN',
+        'ERASME', 'EDDY MERCKX', 'CERIA', 'LA ROUE', 'BIZET',
+        'VEEWEYDE', 'SAINT-GUIDON', 'AUMALE', 'CLEMENCEAU', 'DELACROIX',
+        'COMTE DE FLANDRE', 'SAINTE-CATHERINE', 'ANNEESSENS', 'LEMONNIER',
+        'HÔTEL DES MONNAIES', 'PORTE DE HAL', 'PARVIS DE SAINT-GILLES',
+        'HORTA', 'ALTITUDE 100', 'STALLE', 'FORT JACO', 'CHURCHILL',
+        'CAVELL', 'VANDERKINDERE', 'FLAGEY', 'FERNAND COCQ', 'TRÔNE',
+        'MAELBEEK', 'BOTANIQUE', 'MADOU', 'PARC', 'TRONE',
+        'STOCKEL', 'CRAINHEM', 'ALMA', 'DEMEY', 'BEAULIEU',
+        'DELTA', 'HANKAR', 'HERRMANN-DEBROUX', 'THIEFFRY', 'PETILLON',
+        'BOILEAU', 'MÉRODE', 'JOURDAIN', 'AMBIORIX', 'DIAMANT',
+        'GRIBAUMONT', 'TOMBERG', 'ROODEBEEK', 'VANDERVELDE', 'KRAAINEM',
+        'PARC DE WOLUWE', 'WOLUWE SHOPPING', 'SAINT-LAMBERT', 'JEAN REY',
+        'THIEFFRY', 'PÉTILLON', 'BOILEAU', 'ARSENAL', 'WIENER',
+        'JOSEPHINE-CHARLOTTE', 'VANDERVELDE', 'WOLUWÉ-SAINT-PIERRE',
+        'AUDERGHEM SHOPPING', 'TROIS COULEURS', 'TRANSVAAL', 'MUSÉE DU TRAM',
+        'TERMINUS TRAM', 'ESPLANADE', 'EXPO', 'STUYVENBERGH', 'HOUBA-BRUGMANN',
+        'CENTENAIRE', 'MIROIR', 'BELGICA', 'RIBAUCOURT', 'YSER',
+        'SURLET DE CHOKIER', 'BOTANIQUE', 'PLASKY', 'DIAMANT', 'MEISER',
+        'SAINT-JOB', 'VIVIER D\'OIE', 'BASCULE', 'BARRIÈRE', 'TRINITÉ'
+      ];
+      
+      const lines = {
+        metro: ['1', '2', '5', '6'],
+        tram: ['3', '4', '7', '8', '9', '19', '25', '39', '44', '51', '55', '62', '81', '82', '92', '93', '97'],
+        bus: ['12', '13', '14', '17', '20', '21', '27', '28', '29', '34', '36', '38', '41', '42', '43', '45', '46', '47', '48', '49', '50', '53', '54', '56', '57', '58', '59', '60', '61', '63', '64', '65', '66', '69', '71', '72', '73', '75', '76', '77', '78', '79', '80', '86', '87', '88', '89', '95'],
+        noctis: ['N04', 'N05', 'N06', 'N08', 'N09', 'N10', 'N11', 'N12', 'N13', 'N16', 'N18']
+      };
+      
+      return stopNames.map((name, idx) => {
+        const types = ['metro', 'tram', 'bus'];
+        const type = types[Math.floor(Math.random() * 3)];
+        const typeLines = lines[type];
+        const numLines = 1 + Math.floor(Math.random() * 3);
+        const stopLines = [];
+        for (let i = 0; i < numLines; i++) {
+          stopLines.push(typeLines[Math.floor(Math.random() * typeLines.length)]);
+        }
+        
+        // Add noctis sometimes
+        if (Math.random() > 0.8) {
+          stopLines.push(lines.noctis[Math.floor(Math.random() * lines.noctis.length)]);
+        }
+        
+        return {
+          id: 1000 + idx,
+          name: name,
+          lat: 50.82 + Math.random() * 0.1,
+          lon: 4.30 + Math.random() * 0.15,
+          lines: [...new Set(stopLines)],
+          type: type,
+          municipality: ['Bruxelles', 'Ixelles', 'Schaerbeek', 'Etterbeek', 'Uccle', 'Forest', 'Anderlecht', 'Molenbeek'][Math.floor(Math.random() * 8)]
+        };
+      });
+    }
+    
+    // Get line type from line ID
+    function getLineType(lineId) {
+      if (!lineId) return 'bus';
+      const id = lineId.toString();
+      if (['1', '2', '5', '6'].includes(id)) return 'metro';
+      if (id.startsWith('N')) return 'noctis';
+      const num = parseInt(id);
+      if ([3, 4, 7, 8, 9, 19, 25, 39, 44, 51, 55, 62, 81, 82, 92, 93, 97].includes(num)) return 'tram';
+      return 'bus';
+    }
+    
+    // Render the board
+    function renderBoard(stops) {
+      const board = document.getElementById('board');
+      board.innerHTML = '';
+      
+      stops.forEach((stop, idx) => {
+        const card = document.createElement('div');
+        card.className = 'stop-card';
+        card.dataset.id = stop.id;
+        card.dataset.name = stop.name;
+        card.dataset.type = stop.type;
+        card.dataset.lines = stop.lines.join(',');
+        
+        // Check if claimed
+        if (claimedSpots[stop.id]) {
+          card.classList.add('claimed');
+        }
+        
+        // Check if mystery
+        if (mysterySpots.includes(idx)) {
+          card.classList.add('mystery');
+        }
+        
+        // Line badges
+        const linesHTML = stop.lines.slice(0, 4).map(line => {
+          const type = getLineType(line);
+          return `<span class="line-badge ${type}">${line}</span>`;
+        }).join('');
+        
+        card.innerHTML = `
+          <span class="stop-id">#${stop.id}</span>
+          <span class="stop-name">${stop.name}</span>
+          <div class="stop-lines">${linesHTML}</div>
+          ${claimedSpots[stop.id] ? `<span class="claimed-badge">${claimedSpots[stop.id].name}</span>` : ''}
+        `;
+        
+        card.addEventListener('click', () => openStopModal(stop));
+        board.appendChild(card);
+      });
+      
+      updateStats();
+    }
+    
+    // Update statistics
+    function updateStats() {
+      document.getElementById('totalStops').textContent = allStops.length;
+      document.getElementById('claimedStops').textContent = Object.keys(claimedSpots).length;
+      document.getElementById('mysteryStops').textContent = mysterySpots.length;
+    }
+    
+    // Open stop modal
+    function openStopModal(stop) {
+      currentStop = stop;
+      document.getElementById('modalTitle').textContent = stop.name;
+      document.getElementById('modalSubtitle').textContent = `ID: ${stop.id}`;
+      document.getElementById('modalLat').textContent = stop.lat?.toFixed(6) || '—';
+      document.getElementById('modalLon').textContent = stop.lon?.toFixed(6) || '—';
+      document.getElementById('modalMunicipality').textContent = stop.municipality || 'Brussels';
+      document.getElementById('modalType').textContent = stop.type?.toUpperCase() || 'TRANSIT';
+      
+      const linesHTML = stop.lines.map(line => {
+        const type = getLineType(line);
+        return `<span class="line-badge ${type}">${line}</span>`;
+      }).join('');
+      document.getElementById('modalLines').innerHTML = linesHTML || '—';
+      
+      // Pre-fill claim form if already claimed
+      if (claimedSpots[stop.id]) {
+        document.getElementById('claimName').value = claimedSpots[stop.id].name;
+        document.getElementById('claimMessage').value = claimedSpots[stop.id].message || '';
+      } else {
+        document.getElementById('claimName').value = '';
+        document.getElementById('claimMessage').value = '';
+      }
+      
+      document.getElementById('stopModal').classList.add('open');
+    }
+    
+    function closeModal() {
+      document.getElementById('stopModal').classList.remove('open');
+      currentStop = null;
+    }
+    
+    // Claim a spot
+    function claimSpot() {
+      if (!currentStop) return;
+      
+      const name = document.getElementById('claimName').value.trim() || 'Anonymous';
+      const message = document.getElementById('claimMessage').value.trim();
+      
+      claimedSpots[currentStop.id] = {
+        name: name,
+        message: message,
+        timestamp: new Date().toISOString(),
+        stop: {
+          id: currentStop.id,
+          name: currentStop.name,
+          lat: currentStop.lat,
+          lon: currentStop.lon,
+          lines: currentStop.lines
+        }
+      };
+      
+      localStorage.setItem('nexus_claimed', JSON.stringify(claimedSpots));
+      
+      // Update UI
+      const card = document.querySelector(`.stop-card[data-id="${currentStop.id}"]`);
+      if (card) {
+        card.classList.add('claimed');
+        if (!card.querySelector('.claimed-badge')) {
+          card.insertAdjacentHTML('beforeend', `<span class="claimed-badge">${name}</span>`);
+        }
+      }
+      
+      updateStats();
+      closeModal();
+      
+      // Show success message
+      showNotification('Territory claimed! 🎯');
+    }
+    
+    // Publish to GitHub
+    function publishToGithub() {
+      if (!currentStop) return;
+      
+      const claim = claimedSpots[currentStop.id] || {
+        name: document.getElementById('claimName').value.trim() || 'Anonymous',
+        message: document.getElementById('claimMessage').value.trim()
+      };
+      
+      const content = generateClaimMarkdown(currentStop, claim);
+      const encodedContent = encodeURIComponent(content);
+      const filename = `claims/${currentStop.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}.md`;
+      
+      // Open GitHub new file page
+      const githubUrl = `https://github.com/new?filename=${encodeURIComponent(filename)}&value=${encodedContent}`;
+      window.open(githubUrl, '_blank');
+    }
+    
+    // Deploy to Vercel
+    function deployToVercel() {
+      if (!currentStop) return;
+      
+      const html = generateClaimHTML(currentStop, claimedSpots[currentStop.id]);
+      const blob = new Blob([html], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      
+      // Download the file first
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `nexus-${currentStop.id}.html`;
+      a.click();
+      
+      // Open Vercel
+      setTimeout(() => {
+        window.open('https://vercel.com/new', '_blank');
+      }, 500);
+      
+      showNotification('HTML téléchargé! Glissez-le sur Vercel.');
+    }
+    
+    // Generate claim markdown
+    function generateClaimMarkdown(stop, claim) {
+      return `# 🎯 mySpotL — Claim
+
+## ${stop.name}
+
+**Claimed by:** ${claim.name}  
+**Date:** ${new Date().toISOString()}
+
+### Coordinates
+- Latitude: ${stop.lat}
+- Longitude: ${stop.lon}
+
+### Lines
+${stop.lines.map(l => `- ${l}`).join('\n')}
+
+### Message
+> ${claim.message || '_No message left._'}
+
+---
+
+*Part of the mySpotL ARG. Find S.*
+
+<!-- 
+  Hint: The data never lies.
+  Look for patterns in the claimed territories.
+  — S.
+-->
+`;
+    }
+    
+    // Generate claim HTML
+    function generateClaimHTML(stop, claim) {
+      return `<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mySPOT — ${stop.name}</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { 
+      font-family: system-ui, sans-serif; 
+      background: #0a0a0c; 
+      color: #e0e0e8;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .card {
+      background: #14141c;
+      border: 1px solid rgba(0, 255, 157, 0.3);
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 500px;
+      text-align: center;
+    }
+    .card::before {
+      content: '';
+      display: block;
+      height: 4px;
+      background: linear-gradient(90deg, #00ff9d, #00d4ff, #ff006e);
+      margin: -2rem -2rem 2rem -2rem;
+      border-radius: 12px 12px 0 0;
+    }
+    h1 { font-size: 1.5rem; color: #00ff9d; margin-bottom: 0.5rem; }
+    .id { font-size: 0.75rem; color: #6b6b7b; }
+    .claim { margin: 1.5rem 0; padding: 1rem; background: rgba(255, 0, 110, 0.1); border-radius: 8px; }
+    .claim-name { color: #ff006e; font-weight: bold; }
+    .message { font-style: italic; color: #6b6b7b; margin-top: 0.5rem; }
+    .signature { margin-top: 2rem; font-family: serif; font-style: italic; color: #ff006e; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>${stop.name}</h1>
+    <p class="id">ID: ${stop.id} | ${stop.lines.join(', ')}</p>
+    <div class="claim">
+      <p class="claim-name">${claim?.name || 'Unclaimed'}</p>
+      <p class="message">"${claim?.message || 'Territory awaiting its owner.'}"</p>
+    </div>
+    <p class="signature">— S.</p>
+  </div>
+</body>
+</html>`;
+    }
+    
+    // Export functions
+    function openExportModal() {
+      document.getElementById('exportModal').classList.add('open');
+    }
+    
+    function closeExportModal() {
+      document.getElementById('exportModal').classList.remove('open');
+    }
+    
+    function exportJSON() {
+      const data = {
+        meta: {
+          exported: new Date().toISOString(),
+          game: 'mySpotL',
+          version: '1.0',
+          signature: 'S.'
+        },
+        claims: claimedSpots,
+        stats: {
+          total: Object.keys(claimedSpots).length
+        }
+      };
+      
+      downloadFile(JSON.stringify(data, null, 2), 'nexus-claims.json', 'application/json');
+    }
+    
+    function exportMarkdown() {
+      let md = `# 🎯 mySpotL — My Claims\n\n`;
+      md += `> Exported: ${new Date().toLocaleString()}\n\n`;
+      md += `## Statistics\n- Total Claims: ${Object.keys(claimedSpots).length}\n\n`;
+      md += `---\n\n`;
+      
+      Object.values(claimedSpots).forEach(claim => {
+        md += `### ${claim.stop.name}\n`;
+        md += `- **ID:** ${claim.stop.id}\n`;
+        md += `- **Claimed by:** ${claim.name}\n`;
+        md += `- **Lines:** ${claim.stop.lines.join(', ')}\n`;
+        if (claim.message) md += `- **Message:** "${claim.message}"\n`;
+        md += `\n`;
+      });
+      
+      md += `---\n\n*— S.*`;
+      
+      downloadFile(md, 'nexus-claims.md', 'text/markdown');
+    }
+    
+    function generateGithubPage() {
+      const html = generateFullPage();
+      downloadFile(html, 'index.html', 'text/html');
+      showNotification('Créez un repo GitHub, uploadez index.html, activez Pages!');
+    }
+    
+    function generateVercelConfig() {
+      const config = {
+        version: 2,
+        builds: [{ src: "index.html", use: "@vercel/static" }],
+        routes: [{ src: "/(.*)", dest: "/index.html" }]
+      };
+      
+      const html = generateFullPage();
+      
+      // Download both files
+      downloadFile(JSON.stringify(config, null, 2), 'vercel.json', 'application/json');
+      setTimeout(() => {
+        downloadFile(html, 'index.html', 'text/html');
+      }, 500);
+      
+      showNotification('vercel.json + index.html téléchargés!');
+    }
+    
+    function generateFullPage() {
+      const claims = Object.values(claimedSpots);
+      
+      return `<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mySpot — My Territory</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { 
+      font-family: 'Courier New', monospace; 
+      background: #0a0a0c; 
+      color: #e0e0e8;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    h1 { 
+      font-size: 2rem; 
+      background: linear-gradient(135deg, #00ff9d, #00d4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .card {
+      background: #14141c;
+      border: 1px solid rgba(0, 255, 157, 0.3);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+    .card h2 { font-size: 0.9rem; color: #00ff9d; }
+    .card p { font-size: 0.75rem; color: #6b6b7b; margin-top: 0.5rem; }
+    .signature { 
+      text-align: center; 
+      margin-top: 3rem; 
+      font-family: serif; 
+      font-style: italic; 
+      color: #ff006e; 
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>█▓▒░ mySpot ░▒▓█</h1>
+  <div class="grid">
+    ${claims.map(c => `
+      <div class="card">
+        <h2>${c.stop.name}</h2>
+        <p>Claimed by: ${c.name}</p>
+        <p>Lines: ${c.stop.lines.join(', ')}</p>
+        ${c.message ? `<p>"${c.message}"</p>` : ''}
+      </div>
+    `).join('')}
+  </div>
+  <p class="signature">— S.</p>
+</body>
+</html>`;
+    }
+    
+    function downloadFile(content, filename, type) {
+      const blob = new Blob([content], { type });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+    
+    // Notification
+    function showNotification(message) {
+      const notif = document.createElement('div');
+      notif.style.cssText = `
+        position: fixed;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, #00ff9d, #00d4ff);
+        color: #0a0a0c;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        font-weight: bold;
+        z-index: 9999;
+        animation: slideUp 0.3s ease;
+      `;
+      notif.textContent = message;
+      document.body.appendChild(notif);
+      setTimeout(() => notif.remove(), 3000);
+    }
+    
+    // Filter functionality
+    function setupFilters() {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const searchInput = document.getElementById('searchInput');
+      
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.dataset.filter;
+          
+          // Handle mutually exclusive filters
+          if (['all', 'metro', 'tram', 'bus', 'noctis'].includes(filter)) {
+            document.querySelectorAll('.filter-btn[data-filter="all"], .filter-btn[data-filter="metro"], .filter-btn[data-filter="tram"], .filter-btn[data-filter="bus"], .filter-btn[data-filter="noctis"]').forEach(b => b.classList.remove('active'));
+          }
+          
+          btn.classList.toggle('active');
+          if (filter === 'all') {
+            filterBtns.forEach(b => {
+              if (b.dataset.filter !== 'all') b.classList.remove('active');
+            });
+            btn.classList.add('active');
+          }
+          
+          applyFilters();
+        });
+      });
+      
+      searchInput.addEventListener('input', applyFilters);
+    }
+    
+    function applyFilters() {
+      const search = document.getElementById('searchInput').value.toLowerCase();
+      const activeFilters = Array.from(document.querySelectorAll('.filter-btn.active')).map(b => b.dataset.filter);
+      
+      document.querySelectorAll('.stop-card').forEach(card => {
+        const name = card.dataset.name.toLowerCase();
+        const type = card.dataset.type;
+        const lines = card.dataset.lines;
+        const id = card.dataset.id;
+        
+        let show = true;
+        
+        // Search filter
+        if (search && !name.includes(search) && !lines.includes(search) && !id.includes(search)) {
+          show = false;
+        }
+        
+        // Type filters
+        if (!activeFilters.includes('all')) {
+          if (activeFilters.some(f => ['metro', 'tram', 'bus', 'noctis'].includes(f))) {
+            if (!activeFilters.includes(type)) show = false;
+          }
+        }
+        
+        // Claimed filter
+        if (activeFilters.includes('claimed') && !claimedSpots[id]) {
+          show = false;
+        }
+        
+        // Mystery filter
+        if (activeFilters.includes('mystery') && !card.classList.contains('mystery')) {
+          show = false;
+        }
+        
+        card.style.display = show ? '' : 'none';
+      });
+    }
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        closeModal();
+        closeExportModal();
+      }
+    });
+    
+    // Initialize
+    async function init() {
+      initMysterySpots();
+      allStops = await fetchStops();
+      renderBoard(allStops);
+      setupFilters();
+      
+      // Easter egg in console
+      console.log(`
+      ███╗   ██╗███████╗██╗  ██╗██╗   ██╗███████╗
+      ████╗  ██║██╔════╝╚██╗██╔╝██║   ██║██╔════╝
+      ██╔██╗ ██║█████╗   ╚███╔╝ ██║   ██║███████╗
+      ██║╚██╗██║██╔══╝   ██╔██╗ ██║   ██║╚════██║
+      ██║ ╚████║███████╗██╔╝ ██╗╚██████╔╝███████║
+      ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝
+      
+      Vous cherchez S.?
+      
+      Indice: Les données personnelles sont protégées.
+      Mais les patterns, eux, ne mentent jamais.
+      
+      Article 15 RGPD: Droit d'accès de la personne concernée.
+      Article 17 RGPD: Droit à l'effacement.
+      
+      Qui a créé ce jeu?
+      Suivez les arrêts. Réclamez. Publiez. Trouvez.
+      
+      — S.
+      `);
+    }
+    
+    init();
+  </script>
+</body>
+</html>

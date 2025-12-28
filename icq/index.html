@@ -1,0 +1,1297 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Universitas Loremensis – Catalogue des cours</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #050814;
+      --bg-soft: #0b1020;
+      --bg-softer: #11172a;
+      --accent: #4fd1c5;
+      --accent-strong: #f56565;
+      --accent-alt: #a855f7;
+      --text-main: #f7fafc;
+      --text-muted: #a0aec0;
+      --border-subtle: #2d3748;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+      --radius-xl: 18px;
+      --radius-xxl: 26px;
+      --transition-fast: 0.18s ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1a202c 0, #050814 48%, #000 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: linear-gradient(to right, rgba(5, 8, 20, 0.98), rgba(11, 16, 32, 0.98));
+      border-bottom: 1px solid rgba(79, 209, 197, 0.35);
+      backdrop-filter: blur(16px);
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.7rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #ffffff 0, #4fd1c5 18%, #2b6cb0 45%, #1a202c 80%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 2px rgba(79, 209, 197, 0.3);
+      font-size: 1.6rem;
+    }
+
+    .brand-text-main {
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+    }
+
+    .brand-text-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      border-radius: 999px;
+      border: 1px solid rgba(45, 55, 72, 0.9);
+      background: rgba(10, 14, 27, 0.9);
+      padding: 0.25rem 0.45rem;
+    }
+
+    .lang-btn {
+      border-radius: 999px;
+      border: 1px solid transparent;
+      padding: 0.16rem 0.5rem;
+      cursor: pointer;
+      background: transparent;
+      color: inherit;
+      font-size: 0.74rem;
+      transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+    }
+
+    .lang-btn[data-active="true"] {
+      border-color: rgba(79, 209, 197, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--accent);
+    }
+
+    .user-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(45, 55, 72, 0.8);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .user-status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #48bb78;
+      box-shadow: 0 0 0 4px rgba(72, 187, 120, 0.2);
+    }
+
+    main {
+      flex: 1;
+      padding: 1.2rem;
+    }
+
+    .layout {
+      max-width: 1200px;
+      margin: 0 auto 1.3rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.8fr);
+      gap: 1.2rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 960px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      main {
+        padding-inline: 0.85rem;
+      }
+    }
+
+    .hero {
+      background: radial-gradient(circle at top left, rgba(79, 209, 197, 0.14), rgba(15, 23, 42, 0.98));
+      border-radius: var(--radius-xxl);
+      padding: 1.2rem 1.3rem 1.1rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(79, 209, 197, 0.24);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 12% 0, rgba(129, 230, 217, 0.18), transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(103, 232, 249, 0.12), transparent 60%),
+        radial-gradient(circle at 0 110%, rgba(129, 140, 248, 0.2), transparent 55%);
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .hero-title {
+      font-size: 1.5rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .hero-sub {
+      margin-top: 0.3rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .hero-sub span.li {
+      display: block;
+      font-style: italic;
+      opacity: 0.9;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.7rem;
+    }
+
+    .hero-tag {
+      font-size: 0.7rem;
+      padding: 0.16rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(79, 209, 197, 0.55);
+      background: rgba(15, 23, 42, 0.9);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-meta {
+      margin-top: 0.7rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta strong {
+      color: var(--accent);
+    }
+
+    .filters {
+      background: var(--bg-soft);
+      border-radius: var(--radius-xxl);
+      padding: 0.9rem 1rem 0.8rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.8rem;
+    }
+
+    .filters-title {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .filters-title span.icon {
+      font-size: 1.05rem;
+    }
+
+    .filters-group {
+      margin-top: 0.5rem;
+    }
+
+    .filters-label {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .chip {
+      font-size: 0.74rem;
+      border-radius: 999px;
+      padding: 0.18rem 0.55rem;
+      border: 1px solid rgba(45, 55, 72, 1);
+      background: rgba(9, 13, 26, 0.95);
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: border-color var(--transition-fast), background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .chip[data-active="true"] {
+      border-color: rgba(79, 209, 197, 0.9);
+      background: rgba(15, 23, 42, 1);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .search-input {
+      width: 100%;
+      margin-top: 0.3rem;
+      border-radius: 999px;
+      border: 1px solid rgba(45, 55, 72, 1);
+      background: rgba(9, 13, 26, 0.95);
+      color: var(--text-main);
+      padding: 0.35rem 0.7rem;
+      font-size: 0.8rem;
+      outline: none;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    .search-input::placeholder {
+      color: #4a5568;
+    }
+
+    .search-input:focus {
+      border-color: rgba(79, 209, 197, 0.9);
+      box-shadow: 0 0 0 1px rgba(79, 209, 197, 0.6);
+      background: rgba(10, 16, 32, 0.98);
+    }
+
+    .stats-line {
+      margin-top: 0.5rem;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.4rem;
+    }
+
+    .stats-line strong {
+      color: var(--accent);
+    }
+
+    .catalog {
+      background: var(--bg-soft);
+      border-radius: var(--radius-xxl);
+      padding: 0.9rem 1rem 0.8rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .catalog-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .catalog-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .catalog-title span.icon {
+      font-size: 1.1rem;
+    }
+
+    .catalog-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .catalog-list {
+      margin-top: 0.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-height: calc(100vh - 7rem);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(79, 209, 197, 0.6) rgba(15, 23, 42, 1);
+    }
+
+    .catalog-list::-webkit-scrollbar {
+      width: 6px;
+    }
+    .catalog-list::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 1);
+    }
+    .catalog-list::-webkit-scrollbar-thumb {
+      background: rgba(79, 209, 197, 0.8);
+      border-radius: 999px;
+    }
+
+    .program-card {
+      border-radius: 16px;
+      border: 1px solid rgba(45, 55, 72, 1);
+      background: rgba(9, 13, 26, 0.96);
+      padding: 0.7rem 0.7rem 0.6rem;
+      transition: border-color var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .program-card:hover {
+      border-color: rgba(79, 209, 197, 0.8);
+      background: radial-gradient(circle at top left, rgba(79, 209, 197, 0.16), rgba(9, 13, 26, 0.98));
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      transform: translateY(-1px);
+    }
+
+    .program-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.4rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .program-title {
+      font-size: 0.86rem;
+      font-weight: 600;
+    }
+
+    .program-title span.li {
+      display: block;
+      font-size: 0.76rem;
+      font-style: italic;
+      color: var(--accent-alt);
+    }
+
+    .program-meta {
+      text-align: right;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .program-meta strong {
+      color: var(--accent);
+    }
+
+    .program-desc {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .program-desc p + p {
+      margin-top: 0.15rem;
+      font-style: italic;
+      opacity: 0.9;
+    }
+
+    .course-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.45rem;
+    }
+
+    .course-card {
+      border-radius: 12px;
+      border: 1px solid rgba(45, 55, 72, 1);
+      background: rgba(10, 16, 32, 0.98);
+      padding: 0.45rem 0.5rem 0.4rem;
+      font-size: 0.74rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.16rem;
+    }
+
+    .course-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.35rem;
+      align-items: baseline;
+    }
+
+    .course-title {
+      font-weight: 500;
+    }
+
+    .course-title span.li {
+      display: block;
+      font-size: 0.7rem;
+      font-style: italic;
+      color: var(--accent-alt);
+    }
+
+    .course-code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.68rem;
+      color: #e9d8fd;
+    }
+
+    .course-meta {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.3rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      border-radius: 999px;
+      padding: 0.08rem 0.45rem;
+      border: 1px solid rgba(45, 55, 72, 1);
+      font-size: 0.66rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge--mandatory {
+      border-color: rgba(245, 101, 101, 0.9);
+      color: #fed7d7;
+      background: rgba(153, 27, 27, 0.7);
+    }
+
+    .badge--optional {
+      border-color: rgba(129, 230, 217, 0.9);
+      color: #e6fffa;
+      background: rgba(21, 94, 117, 0.7);
+    }
+
+    .badge--level {
+      border-color: rgba(79, 209, 197, 0.8);
+      color: var(--accent);
+    }
+
+    footer {
+      border-top: 1px solid rgba(45, 55, 72, 1);
+      padding: 0.7rem 1.2rem 1.2rem;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      background: radial-gradient(circle at bottom, #111827, #000);
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .footer-pill {
+      padding: 0.14rem 0.5rem;
+      border-radius: 999px;
+      border: 1px dashed rgba(45, 55, 72, 1);
+    }
+
+    .footer-pill strong {
+      color: #f6e05e;
+      font-family: ui-monospace, monospace;
+    }
+  </style>
+</head>
+<body>
+<div class="page" data-lang="fr">
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true">🎓</div>
+        <div>
+          <div class="brand-text-main">Universitas Loremensis</div>
+          <div class="brand-text-sub">Université du Lorem Ipsum · Portail des études</div>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="lang-toggle" aria-label="Basculer la langue d’interface (FR / Lorem)">
+          <button class="lang-btn" data-lang-btn="fr" data-active="true">FR + Lorem</button>
+          <button class="lang-btn" data-lang-btn="li">Lorem + FR</button>
+        </div>
+        <div class="user-pill">
+          <span class="user-status-dot"></span>
+          <span>Profil&nbsp;: <strong>Étudiant primo-inscrit</strong></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="layout">
+      <!-- Colonne gauche : intro + filtres -->
+      <div>
+        <section class="hero" aria-label="Présentation de l’université">
+          <h1 class="hero-title">Universitas Loremensis</h1>
+          <p class="hero-sub">
+            <span class="fr">
+              Université publique imaginaire dédiée aux études de Lorem Ipsum, à la pédagogie incompréhensible
+              mais parfaitement structurée.
+            </span>
+            <span class="li">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Universitas loremensis structura perfecta,
+              sensus minima, procedura maxima.
+            </span>
+          </p>
+          <div class="hero-tags">
+            <span class="hero-tag">Catalogue complet de cours</span>
+            <span class="hero-tag">Interface bilingue français / lorem ipsum</span>
+            <span class="hero-tag">Procédures 100&nbsp;% en ligne</span>
+          </div>
+          <div class="hero-meta">
+            <div>
+              <strong>Bilingue :</strong> chaque description de formation combine français explicatif
+              et <em>lorem ipsum</em> institutionnel.
+            </div>
+            <div>
+              <strong>But :</strong> tout semble pédagogique, mais la moitié du sens se dissout
+              dans une langue décorative.
+            </div>
+          </div>
+        </section>
+
+        <section class="filters" aria-label="Filtres du catalogue">
+          <div class="filters-title">
+            <span class="icon">🔍</span>
+            <span>Filtrer le catalogue</span>
+          </div>
+
+          <div class="filters-group">
+            <div class="filters-label">Faculté / Facultas</div>
+            <div class="chips" id="facultyChips">
+              <!-- rempli par JS -->
+            </div>
+          </div>
+
+          <div class="filters-group">
+            <div class="filters-label">Niveau d’étude / Gradus</div>
+            <div class="chips" id="levelChips">
+              <!-- rempli par JS -->
+            </div>
+          </div>
+
+          <div class="filters-group">
+            <div class="filters-label">Recherche dans le titre ou le code</div>
+            <input id="searchInput" class="search-input"
+                   placeholder="Rechercher un cours (FR ou lorem)…" />
+          </div>
+
+          <div class="stats-line">
+            <span id="statsPrograms">0 formations affichées</span>
+            <span id="statsCourses">0 cours affichés</span>
+          </div>
+        </section>
+      </div>
+
+      <!-- Colonne droite : catalogue -->
+      <section class="catalog" aria-label="Catalogue des formations et des cours">
+        <div class="catalog-header">
+          <div class="catalog-title">
+            <span class="icon">📚</span>
+            <span>Catalogue complet</span>
+          </div>
+          <div class="catalog-sub">
+            Liste structurée par faculté, niveau et programmes.  
+            <span>Texte FR + texte lorem pour chaque descriptif.</span>
+          </div>
+        </div>
+
+        <div class="catalog-list" id="catalogList">
+          <!-- rempli par JS -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        Lorem ipsum © Universitas Loremensis – Campus central Terra Perfecta.
+      </div>
+      <div class="footer-links">
+        <span class="footer-pill">Charte &nbsp;·&nbsp; Lorem ipsum regulatio</span>
+        <span class="footer-pill">Données &nbsp;·&nbsp; Politique <strong>DATA-LI-01</strong></span>
+        <span class="footer-pill">Support études &nbsp;·&nbsp; Ticket <strong>#UNI-HELP-00</strong></span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // ====== Données du catalogue (FR + lorem) ======
+  const catalogData = [
+    {
+      facultyId: "lettres",
+      facultyFr: "Lettres & Langues",
+      facultyLi: "Facultas Verborum",
+      color: "var(--accent)",
+      programs: [
+        {
+          level: "Licence",
+          code: "LIC-LOL-01",
+          titleFr: "Licence Lorem & Humanités",
+          titleLi: "Licentia Lorem Humanitatis",
+          descFr:
+            "Formation généraliste centrée sur les textes, la rhétorique et la philosophie du Lorem Ipsum.",
+          descLi:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem humanitas, cursus sem non porttitor dictum.",
+          courses: [
+            {
+              code: "LOR101",
+              titleFr: "Introduction au Lorem Ipsum",
+              titleLi: "Introductio ad Lorem",
+              ects: 5,
+              semester: 1,
+              mandatory: true
+            },
+            {
+              code: "LOR112",
+              titleFr: "Grammaire du pseudo-latin",
+              titleLi: "Grammatica Pseudo-Latina",
+              ects: 4,
+              semester: 1,
+              mandatory: true
+            },
+            {
+              code: "LOR124",
+              titleFr: "Poétique de l’incompréhensible",
+              titleLi: "Poetica Inintellegibilis",
+              ects: 4,
+              semester: 2,
+              mandatory: false
+            },
+            {
+              code: "LOR130",
+              titleFr: "Atelier : écrire en lorem",
+              titleLi: "Laboratorium Scripturae",
+              ects: 3,
+              semester: 2,
+              mandatory: false
+            }
+          ]
+        },
+        {
+          level: "Master",
+          code: "MAS-LOL-02",
+          titleFr: "Master Enjeux critiques du Lorem",
+          titleLi: "Magister Critica Lorem",
+          descFr:
+            "Approche avancée des textes factices, de la mise en page et des stratégies de confusion pédagogique.",
+          descLi:
+            "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+          courses: [
+            {
+              code: "LOR501",
+              titleFr: "Séminaire : histoire secrète du Lorem",
+              titleLi: "Secretum Historiae Lorem",
+              ects: 6,
+              semester: 1,
+              mandatory: true
+            },
+            {
+              code: "LOR512",
+              titleFr: "Typographie et illusion de sens",
+              titleLi: "Typographia et Apparentia",
+              ects: 5,
+              semester: 1,
+              mandatory: true
+            },
+            {
+              code: "LOR523",
+              titleFr: "Lecture dirigée : corpus ipsum",
+              titleLi: "Lectio Corpus Ipsum",
+              ects: 4,
+              semester: 2,
+              mandatory: false
+            },
+            {
+              code: "LOR590",
+              titleFr: "Mémoire de recherche lorem",
+              titleLi: "Dissertatio Lorem",
+              ects: 15,
+              semester: 2,
+              mandatory: true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      facultyId: "sciences",
+      facultyFr: "Sciences & Technologies",
+      facultyLi: "Facultas Scientiarum",
+      color: "#f6e05e",
+      programs: [
+        {
+          level: "Licence",
+          code: "LIC-SCI-01",
+          titleFr: "Licence Sciences des données lorem",
+          titleLi: "Licentia Scientia Data Lorem",
+          descFr:
+            "Bases mathématiques et informatiques pour analyser de grandes quantités de texte lorem ipsum.",
+          descLi:
+            "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          courses: [
+            {
+              code: "SDL101",
+              titleFr: "Mathématiques discrètes du filler",
+              titleLi: "Mathematica Filleris",
+              ects: 6,
+              semester: 1,
+              mandatory: true
+            },
+            {
+              code: "SDL115",
+              titleFr: "Statistiques sur corpus lorem",
+              titleLi: "Statistica Corporis",
+              ects: 5,
+              semester: 1,
+              mandatory: true
+            },
+            {
+              code: "SDL132",
+              titleFr: "Programmation pour générer du texte",
+              titleLi: "Programmatio Textuum",
+              ects: 5,
+              semester: 2,
+              mandatory: true
+            },
+            {
+              code: "SDL140",
+              titleFr: "Projet : simulateur de paragraphes",
+              titleLi: "Projectum Paragraphorum",
+              ects: 4,
+              semester: 2,
+              mandatory: false
+            }
+          ]
+        },
+        {
+          level: "Master",
+          code: "MAS-SCI-02",
+          titleFr: "Master Modélisation de la confusion",
+          titleLi: "Magister Modelatio Confusionis",
+          descFr:
+            "Formation avancée en modélisation, simulation et visualisation de la perte de sens dans les systèmes complexes.",
+          descLi:
+            "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+          courses: [
+            {
+              code: "MMC501",
+              titleFr: "Systèmes complexes de règles administratives",
+              titleLi: "Systemata Administrativa Complexa",
+              ects: 6,
+              semester: 1,
+              mandatory: true
+            },
+            {
+              code: "MMC517",
+              titleFr: "Simulation d’agents perdus",
+              titleLi: "Simulatio Agentium",
+              ects: 5,
+              semester: 1,
+              mandatory: true
+            },
+            {
+              code: "MMC533",
+              titleFr: "Visualisation de la surcharge cognitive",
+              titleLi: "Visus Onus Cognitivus",
+              ects: 4,
+              semester: 2,
+              mandatory: false
+            },
+            {
+              code: "MMC580",
+              titleFr: "Mémoire : modèles de désorientation",
+              titleLi: "Dissertatio Desorientatio",
+              ects: 15,
+              semester: 2,
+              mandatory: true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      facultyId: "sociales",
+      facultyFr: "Sciences Sociales",
+      facultyLi: "Facultas Socialis",
+      color: "#63b3ed",
+      programs: [
+        {
+          level: "Licence",
+          code: "LIC-SOC-01",
+          titleFr: "Licence Sociologie des interfaces",
+          titleLi: "Licentia Sociologia Interfaciei",
+          descFr:
+            "Analyse de la manière dont les interfaces bilingues et incompréhensibles transforment l’expérience des usagers.",
+          descLi:
+            "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+          courses: [
+            {
+              code: "SIU101",
+              titleFr: "Sociologie du formulaire",
+              titleLi: "Sociologia Formularum",
+              ects: 5,
+              semester: 1,
+              mandatory: true
+            },
+            {
+              code: "SIU113",
+              titleFr: "Perte de repères et institutions",
+              titleLi: "Desorientatio Institutionalis",
+              ects: 4,
+              semester: 1,
+              mandatory: true
+            },
+            {
+              code: "SIU128",
+              titleFr: "Sémiotique des pictogrammes",
+              titleLi: "Semiotica Pictogrammatum",
+              ects: 4,
+              semester: 2,
+              mandatory: false
+            },
+            {
+              code: "SIU140",
+              titleFr: "Atelier d’enquête auprès d’usagers",
+              titleLi: "Laboratorium Inquisitionis",
+              ects: 3,
+              semester: 2,
+              mandatory: false
+            }
+          ]
+        },
+        {
+          level: "Certificat",
+          code: "CERT-SOC-02",
+          titleFr: "Certificat Médiation bureaucratique",
+          titleLi: "Certificatum Mediatio Bureaucratica",
+          descFr:
+            "Parcours court pour accompagner des publics perdus dans des environnements administratifs saturés.",
+          descLi:
+            "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vestibulum ac diam sit amet quam vehicula.",
+          courses: [
+            {
+              code: "CMB201",
+              titleFr: "Écouter les usagers perdus",
+              titleLi: "Auditio Desorientatorum",
+              ects: 3,
+              semester: 1,
+              mandatory: true
+            },
+            {
+              code: "CMB212",
+              titleFr: "Traduire sans traduire",
+              titleLi: "Translatio Sine Translatione",
+              ects: 3,
+              semester: 1,
+              mandatory: true
+            },
+            {
+              code: "CMB230",
+              titleFr: "Cartographier un portail",
+              titleLi: "Cartographia Portalis",
+              ects: 4,
+              semester: 2,
+              mandatory: false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      facultyId: "info",
+      facultyFr: "Informatique & Interfaces",
+      facultyLi: "Facultas Computationis",
+      color: "#f97373",
+      programs: [
+        {
+          level: "Licence",
+          code: "LIC-INF-01",
+          titleFr: "Licence Informatique des portails",
+          titleLi: "Licentia Informatica Portarum",
+          descFr:
+            "Apprentissage de la conception de portails ultra-cohérents d’apparence, mais déroutants sur le fond.",
+          descLi:
+            "Donec sollicitudin molestie malesuada. Pellentesque in ipsum id orci porta dapibus.",
+          courses: [
+            {
+              code: "PIP101",
+              titleFr: "HTML de l’illusion",
+              titleLi: "HTML Illusorium",
+              ects: 5,
+              semester: 1,
+              mandatory: true
+            },
+            {
+              code: "PIP118",
+              titleFr: "CSS : guidage visuel sans mots",
+              titleLi: "CSS Ductus Visus",
+              ects: 4,
+              semester: 1,
+              mandatory: true
+            },
+            {
+              code: "PIP135",
+              titleFr: "JavaScript : surcharge contrôlée",
+              titleLi: "JS Onus Moderatum",
+              ects: 5,
+              semester: 2,
+              mandatory: true
+            },
+            {
+              code: "PIP150",
+              titleFr: "Atelier : portail Terra Perfecta",
+              titleLi: "Laboratorium Terrae Perfectae",
+              ects: 4,
+              semester: 2,
+              mandatory: false
+            }
+          ]
+        },
+        {
+          level: "Master",
+          code: "MAS-INF-02",
+          titleFr: "Master Design de la dystopie douce",
+          titleLi: "Magister Design Dystopiae Lenis",
+          descFr:
+            "Spécialisation dans la création d’environnements numériques polis, brillants, et subtilement oppressants.",
+          descLi:
+            "Cras ultricies ligula sed magna dictum porta. Nulla quis lorem ut libero malesuada feugiat.",
+          courses: [
+            {
+              code: "DDD501",
+              titleFr: "Esthétique de la confiance",
+              titleLi: "Aesthetica Fiduciae",
+              ects: 5,
+              semester: 1,
+              mandatory: true
+            },
+            {
+              code: "DDD515",
+              titleFr: "Patterns de dépendance numérique",
+              titleLi: "Patternes Dependentiae",
+              ects: 5,
+              semester: 1,
+              mandatory: true
+            },
+            {
+              code: "DDD530",
+              titleFr: "Projets immersifs de micro-dystopie",
+              titleLi: "Projecta Micro-Dystopiae",
+              ects: 6,
+              semester: 2,
+              mandatory: false
+            },
+            {
+              code: "DDD590",
+              titleFr: "Mémoire : interface et pouvoir",
+              titleLi: "Dissertatio Interfaciei",
+              ects: 15,
+              semester: 2,
+              mandatory: true
+            }
+          ]
+        }
+      ]
+    }
+  ];
+
+  // Niveaux possibles (affichage FR + pseudo-latin)
+  const levelsOrder = ["Licence", "Master", "Certificat"];
+  const levelLabels = {
+    Licence: { fr: "Licence", li: "Licentia" },
+    Master: { fr: "Master", li: "Magister" },
+    Certificat: { fr: "Certificat", li: "Certificatum" }
+  };
+
+  // ====== Filtres & DOM ======
+  const facultyChipsContainer = document.getElementById("facultyChips");
+  const levelChipsContainer = document.getElementById("levelChips");
+  const searchInput = document.getElementById("searchInput");
+  const catalogList = document.getElementById("catalogList");
+  const statsPrograms = document.getElementById("statsPrograms");
+  const statsCourses = document.getElementById("statsCourses");
+  const pageRoot = document.querySelector(".page");
+  const langButtons = document.querySelectorAll(".lang-btn");
+
+  let activeFaculty = "all";
+  let activeLevel = "all";
+  let searchTerm = "";
+
+  // Initialisation des chips de faculté
+  function initFacultyChips() {
+    const allChip = document.createElement("button");
+    allChip.className = "chip";
+    allChip.dataset.faculty = "all";
+    allChip.dataset.active = "true";
+    allChip.textContent = "Toutes les facultés";
+    facultyChipsContainer.appendChild(allChip);
+
+    catalogData.forEach((fac) => {
+      const chip = document.createElement("button");
+      chip.className = "chip";
+      chip.dataset.faculty = fac.facultyId;
+      chip.textContent = `${fac.facultyFr} / ${fac.facultyLi}`;
+      facultyChipsContainer.appendChild(chip);
+    });
+
+    facultyChipsContainer.addEventListener("click", (e) => {
+      const btn = e.target.closest(".chip");
+      if (!btn) return;
+      const id = btn.dataset.faculty;
+      activeFaculty = id;
+      [...facultyChipsContainer.querySelectorAll(".chip")].forEach((c) => {
+        c.dataset.active = c.dataset.faculty === id ? "true" : "false";
+      });
+      renderCatalog();
+    });
+  }
+
+  // Initialisation des chips de niveau
+  function initLevelChips() {
+    const allChip = document.createElement("button");
+    allChip.className = "chip";
+    allChip.dataset.level = "all";
+    allChip.dataset.active = "true";
+    allChip.textContent = "Tous les niveaux";
+    levelChipsContainer.appendChild(allChip);
+
+    levelsOrder.forEach((lvl) => {
+      const chip = document.createElement("button");
+      chip.className = "chip";
+      chip.dataset.level = lvl;
+      chip.textContent = `${levelLabels[lvl].fr} / ${levelLabels[lvl].li}`;
+      levelChipsContainer.appendChild(chip);
+    });
+
+    levelChipsContainer.addEventListener("click", (e) => {
+      const btn = e.target.closest(".chip");
+      if (!btn) return;
+      const lvl = btn.dataset.level;
+      activeLevel = lvl;
+      [...levelChipsContainer.querySelectorAll(".chip")].forEach((c) => {
+        c.dataset.active = c.dataset.level === lvl ? "true" : "false";
+      });
+      renderCatalog();
+    });
+  }
+
+  // Recherche
+  searchInput.addEventListener("input", () => {
+    searchTerm = searchInput.value.trim().toLowerCase();
+    renderCatalog();
+  });
+
+  // Bascule de "langue" (en réalité, on change surtout l’ordre FR/Lorem dans la mise en forme)
+  langButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const lang = btn.dataset.langBtn;
+      pageRoot.dataset.lang = lang;
+      langButtons.forEach((b) => {
+        b.dataset.active = b.dataset.langBtn === lang ? "true" : "false";
+      });
+      // Ici on ne retraduit pas : FR + Lorem existent dans la même page.
+      // On pourrait ajouter des effets visuels si besoin.
+    });
+  });
+
+  // Rendu du catalogue
+  function renderCatalog() {
+    catalogList.innerHTML = "";
+    let totalPrograms = 0;
+    let totalCourses = 0;
+
+    catalogData.forEach((fac) => {
+      if (activeFaculty !== "all" && fac.facultyId !== activeFaculty) return;
+
+      // Pour chaque programme de la faculté, filtrer par niveau
+      fac.programs
+        .filter((p) => activeLevel === "all" || p.level === activeLevel)
+        .forEach((program) => {
+          // Filtrer sur la recherche (programme + cours)
+          const matchesProgramText =
+            (program.titleFr + " " + program.titleLi + " " + program.code)
+              .toLowerCase()
+              .includes(searchTerm);
+
+          let programCourses = program.courses.filter((c) => {
+            const txt =
+              (c.titleFr + " " + c.titleLi + " " + c.code).toLowerCase();
+            return !searchTerm || txt.includes(searchTerm) || matchesProgramText;
+          });
+
+          if (!programCourses.length) return;
+
+          totalPrograms++;
+          totalCourses += programCourses.length;
+
+          const programCard = document.createElement("article");
+          programCard.className = "program-card";
+
+          const header = document.createElement("div");
+          header.className = "program-header";
+
+          const title = document.createElement("div");
+          title.className = "program-title";
+          title.innerHTML = `
+            <span class="fr">${program.titleFr}</span>
+            <span class="li">${program.titleLi}</span>
+          `;
+
+          const meta = document.createElement("div");
+          meta.className = "program-meta";
+          meta.innerHTML = `
+            <div><strong>${program.level}</strong> · ${fac.facultyFr}</div>
+            <div>Code formation : <code>${program.code}</code></div>
+          `;
+
+          header.appendChild(title);
+          header.appendChild(meta);
+
+          const desc = document.createElement("div");
+          desc.className = "program-desc";
+          const pFr = document.createElement("p");
+          pFr.textContent = program.descFr;
+          const pLi = document.createElement("p");
+          pLi.textContent = program.descLi;
+          desc.appendChild(pFr);
+          desc.appendChild(pLi);
+
+          const courseList = document.createElement("ul");
+          courseList.className = "course-list";
+
+          programCourses.forEach((course) => {
+            const li = document.createElement("li");
+            li.className = "course-card";
+
+            const ch = document.createElement("div");
+            ch.className = "course-header";
+
+            const titleC = document.createElement("div");
+            titleC.className = "course-title";
+            titleC.innerHTML = `
+              <span class="fr">${course.titleFr}</span>
+              <span class="li">${course.titleLi}</span>
+            `;
+
+            const code = document.createElement("div");
+            code.className = "course-code";
+            code.textContent = course.code;
+
+            ch.appendChild(titleC);
+            ch.appendChild(code);
+
+            const metaC = document.createElement("div");
+            metaC.className = "course-meta";
+
+            const leftMeta = document.createElement("div");
+            leftMeta.textContent = `Semestre ${course.semester} · ${course.ects} ECTS`;
+
+            const rightMeta = document.createElement("div");
+            const badge = document.createElement("span");
+            badge.className =
+              "badge " + (course.mandatory ? "badge--mandatory" : "badge--optional");
+            badge.textContent = course.mandatory ? "Obligatoire" : "Optionnel";
+            rightMeta.appendChild(badge);
+
+            metaC.appendChild(leftMeta);
+            metaC.appendChild(rightMeta);
+
+            li.appendChild(ch);
+            li.appendChild(metaC);
+            courseList.appendChild(li);
+          });
+
+          programCard.appendChild(header);
+          programCard.appendChild(desc);
+          programCard.appendChild(courseList);
+
+          catalogList.appendChild(programCard);
+        });
+    });
+
+    statsPrograms.textContent =
+      totalPrograms + (totalPrograms <= 1 ? " formation affichée" : " formations affichées");
+    statsCourses.textContent =
+      totalCourses + (totalCourses <= 1 ? " cours affiché" : " cours affichés");
+  }
+
+  // ====== Init ======
+  initFacultyChips();
+  initLevelChips();
+  renderCatalog();
+</script>
+</body>
+</html>
